@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Astrohelp - Vedic Astrologer & Spiritual Counselor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* Reset & Base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #faf9f6;
+      color: #24262f;
+      scroll-behavior: smooth;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Header/Nav */
+    header {
+      background: #fff;
+      box-shadow: 0 0.5px 6px rgba(0,0,0,0.02);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1320px;
+      margin: auto;
+      padding: 18px 28px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: #7d6cf2;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .navlinks {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .navlinks a {
+      font-size: 1.07rem;
+      font-weight: 500;
+      color: #35373b;
+      transition: color 0.2s;
+    }
+    .navlinks a:hover { color: #7d6cf2; }
+    .nav-icons { display: flex; gap: 20px; font-size: 1.19rem; color: #4a4a4a; }
+    .nav-icons a:hover { color: #7d6cf2; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(120deg, #2b2173 55%, #644bcd 100%);
+      color: #fff;
+      padding: 64px 0 42px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-img {
+      border-radius: 50%;
+      border: 6px solid #ffd54f;
+      width: 340px;
+      height: 340px;
+      background: url('astro-photo.jpg') center/cover no-repeat #eee;
+      box-shadow: 0 8px 36px 0 rgba(60,40,60,.08);
+    }
+    .hero-txt {
+      max-width: 600px;
+    }
+    .hero-txt h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.1rem;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+      line-height: 1.05;
+    }
+    .hero-txt h2 {
+      font-size: 1.45rem;
+      color: #ffc84b;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .hero-txt p {
+      font-size: 1.08rem;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    /* Section Title Gradient */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-align: center;
+      margin: 40px 0 10px 0;
+      background: linear-gradient(90deg, #231e42 0%, #b58cf2 54%, #ffd54f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-sub {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #4a4747;
+      margin-bottom: 28px;
+    }
+
+    /* Services */
+    .services-section {
+      background: #fffbe9;
+      padding: 50px 0 30px 0;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 32px;
+      max-width: 1260px;
+      margin: 0 auto 18px auto;
+    }
+    .service-card {
+      background: #f8f9fb;
+      border-radius: 24px;
+      padding: 44px 32px 32px 32px;
+      text-align: center;
+      box-shadow: 0 6px 28px 0 rgba(60,40,60,.08);
+      margin-bottom: 12px;
+      min-height: 330px;
+    }
+    .service-icon {
+      display: inline-flex;
+      background: linear-gradient(120deg, #7d6cf2 0%, #ffd54f 100%);
+      color: #fff;
+      font-size: 2.15rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 58px;
+      height: 58px;
+      margin-bottom: 17px;
+      box-shadow: 0 4px 20px 0 rgba(160,120,255,.15);
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.36rem;
+      margin-bottom: 9px;
+      color: #232134;
+    }
+    .service-card p, .service-card ul {
+      font-size: 1.06rem;
+      color: #444;
+      margin-bottom: 9px;
+      line-height: 1.57;
+    }
+    .service-card ul {
+      list-style: disc inside;
+      text-align: left;
+      margin: 10px auto 0 auto;
+      max-width: 320px;
+      color: #6b6a74;
+      font-size: 1rem;
+    }
+    .service-card ul li { margin-bottom: 3px; }
+    /* Rituals Section */
+    .rituals-bg {
+      background: linear-gradient(120deg, #6a54e9 0%, #d7d3f8 100%);
+      padding: 50px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .rituals-content {
+      background: #fffbe9;
+      padding: 38px 30px 44px 30px;
+      border-radius: 22px;
+      box-shadow: 0 6px 34px 0 rgba(60,40,60,.10);
+      max-width: 700px;
+      width: 95%;
+      margin: auto;
+      text-align: center;
+    }
+    .rituals-icon {
+      display: inline-flex;
+      background: linear-gradient(120deg, #7d6cf2 0%, #ffd54f 100%);
+      color: #fff;
+      font-size: 2.3rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 68px;
+      height: 68px;
+      margin-bottom: 13px;
+      margin-top: -67px;
+      box-shadow: 0 6px 20px 0 rgba(160,120,255,.11);
+      position: relative;
+      top: 0;
+    }
+    .rituals-title {
+      font-family: 'Playfair Display',serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      background: linear-gradient(90deg, #231e42 0%, #b58cf2 54%, #ffd54f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 10px 0 15px 0;
+    }
+    .rituals-highlight {
+      color: #191a2e;
+      font-weight: 600;
+    }
+    .rituals-main {
+      font-size: 1.32rem;
+      margin: 18px 0 12px 0;
+    }
+    .rituals-icons-list {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .btn-whatsapp {
+      display: inline-block;
+      background: #23d366;
+      color: white;
+      border: none;
+      border-radius: 28px;
+      padding: 16px 42px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 25px 0 0 0;
+      cursor: pointer;
+      box-shadow: 0 4px 20px 0 rgba(35,211,102,.14);
+      transition: background 0.18s;
+    }
+    .btn-whatsapp i { margin-right: 9px; }
+    .whatsapp-link { color: #7d6cf2; margin-left: 15px; font-size: 1.08rem; }
+    .whatsapp-link:hover { text-decoration: underline; }
+    .slide-dots {
+      margin-top: 22px;
+    }
+    .slide-dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .slide-dot.active {
+      background: #23d366;
+    }
+    /* Consultation Form */
+    .consult-section {
+      padding: 54px 0 34px 0;
+      background: #fff;
+    }
+    .consult-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      text-align: center;
+      margin: 0 0 10px 0;
+      background: linear-gradient(90deg, #231e42 0%, #b58cf2 54%, #ffd54f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .consult-sub {
+      text-align: center;
+      color: #455068;
+      font-size: 1.17rem;
+      margin-bottom: 28px;
+    }
+    .form-container {
+      background: linear-gradient(120deg, #6249ca 10%, #342277 90%);
+      border-radius: 28px;
+      box-shadow: 0 6px 32px 0 rgba(60,40,60, .14);
+      padding: 40px 45px 28px 45px;
+      margin: 0 auto;
+      max-width: 780px;
+      width: 95%;
+      color: white;
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 28px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 1rem;
+      color: #fff;
+    }
+    input, select, textarea {
+      padding: 12px 14px;
+      border-radius: 24px;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      outline: none;
+      background: #fafdff;
+      color: #1b2233;
+      resize: none;
+    }
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 6px;
+      accent-color: #ffd54f;
+      transform: scale(1.12);
+    }
+    textarea { grid-column: span 2 }
+    .form-row2 { grid-column: span 2; }
+    .form-actions {
+      grid-column: span 2;
+      display: flex;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .terms-text {
+      font-size: 1rem;
+      color: #ede8f7;
+      margin-left: 9px;
+    }
+    .terms-text a { color: #ffd54f; text-decoration: underline; }
+    .btn-appointment {
+      background: linear-gradient(120deg, #ffd54f 60%, #eec14e 100%);
+      color: #292336;
+      border: none;
+      border-radius: 24px;
+      padding: 14px 38px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-left: auto;
+      cursor: pointer;
+      box-shadow: 0 4px 16px 0 rgba(160,120,255,.10);
+      transition: background 0.19s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-appointment i { font-size: 1.25rem; }
+    /* Contact/Hours Section */
+    .hours-section {
+      background: #fffbe9;
+      padding: 52px 0 48px 0;
+    }
+    .hours-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      text-align: center;
+      background: linear-gradient(90deg, #231e42 0%, #b58cf2 54%, #ffd54f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 7px;
+    }
+    .hours-sub { text-align: center; color: #3a4050; font-size: 1.12rem; margin-bottom: 32px; }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+    .hours-card {
+      background: #f8f9fb;
+      border-radius: 22px;
+      padding: 40px 28px 28px 40px;
+      box-shadow: 0 6px 24px 0 rgba(60,40,60,.07);
+    }
+    .hours-icon {
+      display: inline-flex;
+      background: linear-gradient(120deg, #7d6cf2 0%, #ffd54f 100%);
+      color: #fff;
+      font-size: 2.08rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 18px 0 rgba(160,120,255,.12);
+    }
+    .hours-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+      color: #232134;
+    }
+    .hours-times, .contact-list { font-size: 1.09rem; color: #3a4050; }
+    .hours-times span { color: #7d6cf2; font-weight: 600; margin-left: 12px; }
+    .closed { color: #ed3c3c; }
+    .contact-list li { margin-bottom: 11px; }
+    .contact-list i { color: #7d6cf2; margin-right: 9px; }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; gap: 24px; padding: 38px 0; }
+      .hero-img { width: 250px; height: 250px; }
+      .hero-txt { padding: 0 16px; }
+      .services-grid { grid-template-columns: 1fr;}
+      .hours-grid { grid-template-columns: 1fr; }
+      .form-container { padding: 30px 10vw 18px 10vw; }
+    }
+    @media (max-width: 650px) {
+      .navbar { padding: 10px 10px; }
+      .logo { font-size: 1.2rem; }
+      .navlinks { gap: 16px;}
+      .hero-txt h1 { font-size: 2rem;}
+      .section-title, .consult-title, .hours-title {
+        font-size: 1.42rem;
+      }
+      .services-section, .hours-section, .consult-section, .rituals-bg { padding-left: 0; padding-right: 0; }
+      .service-card { padding: 28px 11px 22px 11px; }
+      .rituals-content { padding: 18px 5px 22px 5px; }
+      .form-container { padding: 16px 2vw 8px 2vw; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <div class="navbar">
+    <div class="logo">Astrohelp</div>
+    <nav class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#consult">Book Appointment</a>
+      <a href="#contact">Contact</a>
+      <div class="nav-icons">
+        <a href="https://www.facebook.com/share/1CTBsPvd1M/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/pt.anandtripath?igsh=Z25sZWo0dGkzNmIz" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="tel:9450314364"><i class="fa-solid fa-phone"></i></a>
+        <a href="mailto:anandtri83@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="about">
+  <div class="hero-img"></div>
+  <div class="hero-txt">
+    <h1>Pandit Anand Tripathi</h1>
+    <h2>Vedic Astrologer &amp; Spiritual Counselor</h2>
+    <p>
+      With over 25 years of dedicated practice in Vedic astrology and ancient wisdom, Pandit Anand Tripathi has guided thousands of souls towards clarity, purpose, and fulfillment. His deep understanding of cosmic energies and planetary influences has made him a trusted advisor for life's most important decisions.
+    </p>
+    <p>
+      Combining traditional Vedic knowledge with modern counseling approaches, he offers compassionate guidance for relationships, career, health, and spiritual growth. His accurate predictions and practical remedies have transformed countless lives across the globe.
+    </p>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services-section" id="services">
+  <div class="section-title">Sacred <span style="background: linear-gradient(90deg,#7d6cf2 0%,#ffd54f 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Services</span></div>
+  <div class="section-sub">Discover ancient wisdom and modern insights through our comprehensive range of spiritual and astrological services, each designed to illuminate your path forward.</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-hand"></i></div>
+      <h3>Palm Reading</h3>
+      <p>Uncover your life's blueprint through the ancient art of palmistry. Your hands reveal your personality, potential, and destiny with remarkable accuracy.</p>
+      <ul>
+        <li>Life &amp; career predictions</li>
+        <li>Relationship compatibility</li>
+        <li>Health &amp; longevity insights</li>
+        <li>Wealth &amp; success indicators</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div>
+      <h3>Kundli Reading</h3>
+      <p>Comprehensive birth chart analysis revealing your soul's journey, karmic patterns, and the cosmic blueprint that shapes your destiny and life experiences.</p>
+      <ul>
+        <li>Complete horoscope analysis</li>
+        <li>Planetary positions &amp; impacts</li>
+        <li>Dasha &amp; transit predictions</li>
+        <li>Remedy recommendations</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-regular fa-star"></i></div>
+      <h3>Vedic Astrology</h3>
+      <p>Deep dive into ancient Vedic wisdom to understand your past, present, and future through precise astronomical calculations and spiritual insights.</p>
+      <ul>
+        <li>Career &amp; business guidance</li>
+        <li>Spiritual growth path</li>
+        <li>Auspicious timing selection</li>
+        <li>Gemstone recommendations</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-regular fa-heart"></i></div>
+      <h3>Marriage Counselling</h3>
+      <p>Navigate love and relationships with cosmic wisdom. Get insights into compatibility, timing, and remedies for a harmonious married life.</p>
+      <ul>
+        <li>Compatibility matching</li>
+        <li>Wedding timing selection</li>
+        <li>Relationship healing</li>
+        <li>Love problem solutions</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+      <h3>Career Guidance</h3>
+      <p>Unlock your professional potential through Vedic astrology. Discover the most favorable career paths and timing for major professional decisions.</p>
+      <ul>
+        <li>Career path analysis</li>
+        <li>Job change timing</li>
+        <li>Business venture guidance</li>
+        <li>Professional growth strategies</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-wave-square"></i></div>
+      <h3>Financial &amp; Health Consultation</h3>
+      <p>Comprehensive guidance for wealth creation and physical well-being through ancient wisdom and planetary influences on your prosperity and health.</p>
+      <ul>
+        <li>Financial planning insights</li>
+        <li>Investment timing guidance</li>
+        <li>Health issue predictions</li>
+        <li>Remedies for prosperity</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Rituals -->
+<section class="rituals-bg">
+  <div class="rituals-content">
+    <div class="rituals-icon"><i class="fa-regular fa-sparkles"></i></div>
+    <div class="rituals-title">Sacred Vedic Rituals</div>
+    <div class="rituals-main">
+      <span class="rituals-highlight">Contact for <span style="color:#5d4fdd;">Yagya</span>, <span style="color:#fecf2e;">Jap</span>, <span style="color:#11b051;">Anushthaan</span> and <span style="color:#33247d;">Puja</span></span> by experienced and qualified pandits
+    </div>
+    <p>Connect with our team of experienced Vedic scholars for authentic ritual ceremonies, personalized prayer services, and traditional spiritual practices tailored to your needs.</p>
+    <a class="btn-whatsapp" href="https://wa.me/919450314364"><i class="fab fa-whatsapp"></i>Contact via WhatsApp</a>
+    <span class="whatsapp-link">Instant consultation available <br><a href="tel:9450314364">9450314364</a></span>
+    <div class="slide-dots">
+      <span class="slide-dot active"></span>
+      <span class="slide-dot"></span>
+      <span class="slide-dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- Consultation Booking -->
+<section class="consult-section" id="consult">
+  <div class="consult-title">Book Your <span style="background: linear-gradient(90deg,#7d6cf2 0%,#ffd54f 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Consultation</span></div>
+  <div class="consult-sub">
+    Take the first step towards clarity and spiritual guidance. Schedule your personalized consultation today.
+  </div>
+  <div class="form-container">
+    <form>
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" placeholder="your.email@example.com" required>
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" placeholder="9450314364" required>
+      </div>
+      <div class="form-group">
+        <label>Service Required *</label>
+        <select required>
+          <option value="">Select a service</option>
+          <option>Palm Reading</option>
+          <option>Kundli Reading</option>
+          <option>Vedic Astrology</option>
+          <option>Marriage Counselling</option>
+          <option>Career Guidance</option>
+          <option>Financial & Health Consultation</option>
+        </select>
+      </div>
+      <div class="form-group form-row2">
+        <label>Date of Birth *</label>
+        <input type="date" required>
+      </div>
+      <div class="form-group form-row2">
+        <label>Preferred Date & Time</label>
+        <input type="datetime-local">
+      </div>
+      <div class="form-group form-row2">
+        <label>Message / Questions</label>
+        <textarea rows="3" placeholder="Tell us about your concerns or specific questions you'd like addressed during the consultation..."></textarea>
+      </div>
+      <div class="form-group form-row2 form-actions">
+        <input type="checkbox" required>
+        <span class="terms-text">I agree to the <a href="#">terms and conditions</a> and <a href="#">privacy policy</a> *</span>
+        <button class="btn-appointment" type="submit"><i class="fa-solid fa-calendar-check"></i>Request Appointment</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Contact & Hours -->
+<section class="hours-section" id="contact">
+  <div class="hours-title">Business <span style="background: linear-gradient(90deg,#7d6cf2 0%,#ffd54f 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Hours</span></div>
+  <div class="hours-sub">Schedule your consultation during our available hours for personalized guidance.</div>
+  <div class="hours-grid">
+    <div class="hours-card">
+      <div class="hours-icon"><i class="fa-regular fa-clock"></i></div>
+      <h3>Office Hours</h3>
+      <div class="hours-times">
+        <div>Monday - Friday <span>9:00 AM - 7:00 PM</span></div>
+        <div>Saturday <span>10:00 AM - 6:00 PM</span></div>
+        <div>Sunday <span>11:00 AM - 4:00 PM</span></div>
+        <div>Public Holidays <span class="closed">Closed</span></div>
+      </div>
+    </div>
+    <div class="hours-card">
+      <div class="hours-icon" style="background:linear-gradient(120deg,#11b051 10%,#ffd54f 87%);"><i class="fa-solid fa-location-dot"></i></div>
+      <h3>Contact Information</h3>
+      <ul class="contact-list">
+        <li><i class="fa-solid fa-phone"></i>Phone<br>9450314364</li>
+        <li><i class="fa-regular fa-envelope"></i>Email<br><a href="mailto:anandtri83@gmail.com">anandtri83@gmail.com</a></li>
+        <li><i class="fa-solid fa-location-dot"></i>Address<br>55-k, tiwranitola,<br>po.chawk<br>Near pakkaGhat<br>Mirzapur uttar pradesh 231001</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer style="text-align:center;color:#888;font-size:1rem;padding:30px 0 28px 0;">
+  &copy; 2025 Astrohelp. All rights reserved.
+</footer>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

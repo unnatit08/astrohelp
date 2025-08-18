@@ -475,6 +475,12 @@
 <!-- Navbar -->
 <header>
   <div class="navbar">
+    <button id="lang-toggle" style="background:#7d6cf2;color:#fff;border:none;
+     border-radius:20px;padding:6px 14px;cursor:pointer;font-size:0.9rem;
+     margin-right:12px;">
+     हिंदी
+    </button>
+
     <div class="logo">Astrohelp</div>
     <nav class="navlinks">
       <a href="#about">About</a>
@@ -684,8 +690,143 @@
     });
   });
 </script>
+<script>
+  const langToggle = document.getElementById("lang-toggle");
+
+  // Dictionary: English ↔ Hindi
+  const translations = {
+    hi: {
+      about: "परिचय",
+      services: "सेवाएं",
+      consult: "अपॉइंटमेंट बुक करें",
+      contact: "संपर्क करें",
+      heroTitle: "पंडित आनंद त्रिपाठी",
+      heroSubtitle: "वैदिक ज्योतिषी एवं आध्यात्मिक सलाहकार",
+      heroP1: "25 वर्षों से अधिक के अनुभव के साथ, पंडित आनंद त्रिपाठी ने हजारों लोगों को स्पष्टता, उद्देश्य और पूर्णता की ओर मार्गदर्शन किया है।",
+      heroP2: "पारंपरिक वैदिक ज्ञान और आधुनिक परामर्श दृष्टिकोण को मिलाकर, वे रिश्ते, करियर, स्वास्थ्य और आध्यात्मिक उन्नति के लिए करुणामय मार्गदर्शन प्रदान करते हैं।",
+
+      servicesTitle: "पवित्र सेवाएं",
+      servicesSub: "प्राचीन ज्ञान और आधुनिक दृष्टिकोण से अपनी जीवन यात्रा को उजागर करें।",
+
+      palm: "हस्त रेखा",
+      palmDesc: "आपके हाथ आपके व्यक्तित्व, क्षमता और भाग्य को दर्शाते हैं।",
+      kundli: "कुंडली विश्लेषण",
+      kundliDesc: "आपकी जन्म कुंडली आपके जीवन की दिशा और कर्म पैटर्न का खुलासा करती है।",
+      vedic: "वैदिक ज्योतिष",
+      vedicDesc: "अतीत, वर्तमान और भविष्य को समझने के लिए वैदिक ज्ञान।",
+      marriage: "विवाह परामर्श",
+      marriageDesc: "संबंधों और विवाह में सामंजस्य हेतु ज्योतिषीय मार्गदर्शन।",
+      career: "करियर मार्गदर्शन",
+      careerDesc: "सही करियर पथ और अवसर खोजें।",
+      finance: "वित्त एवं स्वास्थ्य परामर्श",
+      financeDesc: "समृद्धि और स्वास्थ्य के लिए ज्योतिषीय समाधान।",
+
+      ritualsTitle: "वैदिक अनुष्ठान",
+      ritualsDesc: "यज्ञ, जप, अनुष्ठान और पूजा के लिए अनुभवी पंडित उपलब्ध।",
+
+      consultTitle: "अपनी परामर्श बुक करें",
+      consultSub: "स्पष्टता और आध्यात्मिक मार्गदर्शन की ओर पहला कदम उठाएं।",
+
+      hoursTitle: "व्यवसाय समय",
+      hoursSub: "हमारे उपलब्ध समय में अपनी परामर्श बुक करें।",
+      officeHours: "कार्यालय समय",
+      contactInfo: "संपर्क जानकारी",
+      closed: "बंद"
+    },
+
+    en: {
+      about: "About",
+      services: "Services",
+      consult: "Book Appointment",
+      contact: "Contact",
+      heroTitle: "Pandit Anand Tripathi",
+      heroSubtitle: "Vedic Astrologer & Spiritual Counselor",
+      heroP1: "With over 25 years of dedicated practice, Pandit Anand Tripathi has guided thousands towards clarity, purpose, and fulfillment.",
+      heroP2: "Combining traditional Vedic knowledge with modern counseling, he offers compassionate guidance for relationships, career, health, and spiritual growth.",
+
+      servicesTitle: "Sacred Services",
+      servicesSub: "Discover ancient wisdom and modern insights through our services.",
+
+      palm: "Palm Reading",
+      palmDesc: "Your hands reveal your personality, potential, and destiny.",
+      kundli: "Kundli Reading",
+      kundliDesc: "Your horoscope reveals your karmic patterns and life journey.",
+      vedic: "Vedic Astrology",
+      vedicDesc: "Understand past, present, and future with Vedic wisdom.",
+      marriage: "Marriage Counselling",
+      marriageDesc: "Get guidance for harmony in love and marriage.",
+      career: "Career Guidance",
+      careerDesc: "Discover favorable career paths and timing.",
+      finance: "Financial & Health Consultation",
+      financeDesc: "Wisdom for prosperity and wellness.",
+
+      ritualsTitle: "Sacred Vedic Rituals",
+      ritualsDesc: "Contact for Yagya, Jap, Anushthaan and Puja by experienced Pandits.",
+
+      consultTitle: "Book Your Consultation",
+      consultSub: "Take the first step towards clarity and guidance.",
+
+      hoursTitle: "Business Hours",
+      hoursSub: "Schedule during our available hours.",
+      officeHours: "Office Hours",
+      contactInfo: "Contact Information",
+      closed: "Closed"
+    }
+  };
+
+  let currentLang = "en";
+
+  langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "en" ? "hi" : "en";
+    langToggle.textContent = currentLang === "en" ? "हिंदी" : "English";
+
+    // Navbar
+    document.querySelector('a[href="#about"]').textContent = translations[currentLang].about;
+    document.querySelector('a[href="#services"]').textContent = translations[currentLang].services;
+    document.querySelector('a[href="#consult"]').textContent = translations[currentLang].consult;
+    document.querySelector('a[href="#contact"]').textContent = translations[currentLang].contact;
+
+    // Hero
+    document.querySelector(".hero-txt h1").textContent = translations[currentLang].heroTitle;
+    document.querySelector(".hero-txt h2").textContent = translations[currentLang].heroSubtitle;
+    document.querySelector(".hero-txt p:nth-of-type(1)").textContent = translations[currentLang].heroP1;
+    document.querySelector(".hero-txt p:nth-of-type(2)").textContent = translations[currentLang].heroP2;
+
+    // Services
+    document.querySelector("#services .section-title").textContent = translations[currentLang].servicesTitle;
+    document.querySelector("#services .section-sub").textContent = translations[currentLang].servicesSub;
+    document.querySelectorAll(".service-card")[0].querySelector("h3").textContent = translations[currentLang].palm;
+    document.querySelectorAll(".service-card")[0].querySelector("p").textContent = translations[currentLang].palmDesc;
+    document.querySelectorAll(".service-card")[1].querySelector("h3").textContent = translations[currentLang].kundli;
+    document.querySelectorAll(".service-card")[1].querySelector("p").textContent = translations[currentLang].kundliDesc;
+    document.querySelectorAll(".service-card")[2].querySelector("h3").textContent = translations[currentLang].vedic;
+    document.querySelectorAll(".service-card")[2].querySelector("p").textContent = translations[currentLang].vedicDesc;
+    document.querySelectorAll(".service-card")[3].querySelector("h3").textContent = translations[currentLang].marriage;
+    document.querySelectorAll(".service-card")[3].querySelector("p").textContent = translations[currentLang].marriageDesc;
+    document.querySelectorAll(".service-card")[4].querySelector("h3").textContent = translations[currentLang].career;
+    document.querySelectorAll(".service-card")[4].querySelector("p").textContent = translations[currentLang].careerDesc;
+    document.querySelectorAll(".service-card")[5].querySelector("h3").textContent = translations[currentLang].finance;
+    document.querySelectorAll(".service-card")[5].querySelector("p").textContent = translations[currentLang].financeDesc;
+
+    // Rituals
+    document.querySelector(".rituals-title").textContent = translations[currentLang].ritualsTitle;
+    document.querySelector(".rituals-main").textContent = translations[currentLang].ritualsDesc;
+
+    // Consultation
+    document.querySelector("#consult .consult-title").textContent = translations[currentLang].consultTitle;
+    document.querySelector("#consult .consult-sub").textContent = translations[currentLang].consultSub;
+
+    // Hours
+    document.querySelector("#contact .hours-title").textContent = translations[currentLang].hoursTitle;
+    document.querySelector("#contact .hours-sub").textContent = translations[currentLang].hoursSub;
+    document.querySelector(".hours-card h3").textContent = translations[currentLang].officeHours;
+    document.querySelectorAll(".hours-card h3")[1].textContent = translations[currentLang].contactInfo;
+    document.querySelector(".closed").textContent = translations[currentLang].closed;
+  });
+</script>
 </body>
 </html>
+
 
 
 

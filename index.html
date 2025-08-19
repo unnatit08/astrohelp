@@ -645,7 +645,8 @@
         <textarea rows="3" placeholder="Tell us about your concerns or specific questions you'd like addressed during the consultation..."></textarea>
       </div>
       <div class="form-group form-row2 form-actions">
-        <button class="btn-appointment" type="submit"><i class="fa-solid fa-calendar-check"></i>Request Appointment</button>
+        <button class="btn-appointment" type="button" onclick="sendToWhatsApp()"><i class="fa-solid fa-calendar-check"></i>Request Appointment</button>
+
       </div>
     </form>
   </div>
@@ -819,8 +820,30 @@
     document.querySelector(".closed").textContent = translations[currentLang].closed;
   });
 </script>
+<script>
+function sendToWhatsApp() {
+  let name = document.getElementById('name').value;
+  let phone = document.getElementById('phone').value;
+  let email = document.getElementById('email').value;
+  let service = document.getElementById('service').value;
+  let dob = document.getElementById('dob').value;
+  let datetime = document.getElementById('datetime').value;
+  let message = document.getElementById('message').value;
+  let text = "New Appointment:%0A"
+          + "Name: " + name + "%0A"
+          + "Phone: " + phone + "%0A"
+          + "Email: " + email + "%0A"
+          + "Service: " + service + "%0A"
+          + "DOB: " + dob + "%0A"
+          + "Preferred Date/Time: " + datetime + "%0A"
+          + "Message: " + message;
+  let url = "https://wa.me/919450314364?text=" + text;
+  window.open(url, "_blank");
+}
+</script>
 </body>
 </html>
+
 
 
 

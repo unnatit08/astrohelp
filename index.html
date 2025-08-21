@@ -824,31 +824,38 @@
 </script>
 <script>
 function sendToWhatsApp() {
-  let name = document.getElementById('name').value || "";
-  let phone = document.getElementById('phone').value || "";
-  let email = document.getElementById('email').value || "";
-  let service = document.getElementById('service').value || "";
-  let dob = document.getElementById('dob').value || "";
-  let datetime = document.getElementById('datetime').value || "";
-  let message = document.getElementById('message').value || "";
+  // Retrieve all field values
+  var name = document.getElementById('name').value || "";
+  var phone = document.getElementById('phone').value || "";
+  var email = document.getElementById('email').value || "";
+  var service = document.getElementById('service').value || "";
+  var dob = document.getElementById('dob').value || "";
+  var datetime = document.getElementById('datetime').value || "";
+  var message = document.getElementById('message').value || "";
 
-  let text = `New Appointment:
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Service: ${service}
-DOB: ${dob}
-Preferred Date/Time: ${datetime}
-Message: ${message}`;
+  // Compose the message
+  var text = "New Appointment:\n"
+           + "Name: " + name + "\n"
+           + "Phone: " + phone + "\n"
+           + "Email: " + email + "\n"
+           + "Service: " + service + "\n"
+           + "DOB: " + dob + "\n"
+           + "Preferred Date/Time: " + datetime + "\n"
+           + "Message: " + message;
 
-  let encodedText = encodeURIComponent(text);
+  // Properly encode the message
+  var encodedText = encodeURIComponent(text);
 
-  let url = "https://wa.me/919450314364?text=" + encodedText;
+  // Create the WhatsApp URL
+  var url = "https://wa.me/919450314364?text=" + encodedText;
+
+  // Open WhatsApp
   window.open(url, "_blank");
 }
 </script>
 </body>
 </html>
+
 
 
 

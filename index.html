@@ -647,7 +647,13 @@
       <div class="form-group form-row2 form-actions">
         <div style="background:#ffd54f;padding:14px;border-radius:28px;width:100%;
                     text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.12);">
-          <button type="button" onclick="window.open('https://wa.me/919450314364?text=Hello%20Pandit%20ji','_blank')">Test WhatsApp</button>
+          <button type="button" onclick="sendToWhatsApp()" 
+            style="background:#ffd54f; border:none; border-radius:24px; 
+            padding:12px 28px; cursor:pointer; display:inline-flex; 
+            align-items:center; gap:8px; font-weight:bold; font-size:1.1rem; color:#000;">
+            <i class="fa-brands fa-whatsapp" style="font-size:1.3rem; color:#25D366;"></i>
+            Request Appointment
+          </button>
         </div>
       </div>
     </form>
@@ -824,7 +830,6 @@
 </script>
 <script>
 function sendToWhatsApp() {
-  // Retrieve all field values
   var name = document.getElementById('name').value || "";
   var phone = document.getElementById('phone').value || "";
   var email = document.getElementById('email').value || "";
@@ -833,7 +838,6 @@ function sendToWhatsApp() {
   var datetime = document.getElementById('datetime').value || "";
   var message = document.getElementById('message').value || "";
 
-  // Compose the message
   var text = "New Appointment:\n"
            + "Name: " + name + "\n"
            + "Phone: " + phone + "\n"
@@ -843,18 +847,17 @@ function sendToWhatsApp() {
            + "Preferred Date/Time: " + datetime + "\n"
            + "Message: " + message;
 
-  // Properly encode the message
+  // Encode the whole text after building it
   var encodedText = encodeURIComponent(text);
 
-  // Create the WhatsApp URL
   var url = "https://wa.me/919450314364?text=" + encodedText;
 
-  // Open WhatsApp
   window.open(url, "_blank");
 }
 </script>
 </body>
 </html>
+
 
 
 

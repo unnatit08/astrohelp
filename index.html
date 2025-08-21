@@ -832,13 +832,13 @@
 </script>
 <script>
 function sendToWhatsApp() {
-  let name = document.getElementById('name').value;
-  let phone = document.getElementById('phone').value;
-  let email = document.getElementById('email').value;
-  let service = document.getElementById('service').value;
-  let dob = document.getElementById('dob').value;
-  let datetime = document.getElementById('datetime').value;
-  let message = document.getElementById('message').value;
+  let name = encodeURIComponent(document.getElementById('name').value);
+  let phone = encodeURIComponent(document.getElementById('phone').value);
+  let email = encodeURIComponent(document.getElementById('email').value);
+  let service = encodeURIComponent(document.getElementById('service').value);
+  let dob = encodeURIComponent(document.getElementById('dob').value);
+  let datetime = encodeURIComponent(document.getElementById('datetime').value);
+  let message = encodeURIComponent(document.getElementById('message').value);
   let text = "New Appointment:%0A"
           + "Name: " + name + "%0A"
           + "Phone: " + phone + "%0A"
@@ -853,6 +853,7 @@ function sendToWhatsApp() {
 </script>
 </body>
 </html>
+
 
 
 
